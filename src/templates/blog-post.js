@@ -16,7 +16,18 @@ import FeaturedImage from '../components/FeaturedImage';
 import PageNav from '../components/PageNav';
 import Share from '../components/Share';
 
+const loadDisqus = () => {
+  const d = document, s = d.createElement('script');
+  s.src = 'https://soliditydeveloper-com.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+}
+
 class BlogPostTemplate extends React.Component {
+  componentDidMount() {
+    loadDisqus();
+  }
+
   render() {
     const post = this.props.data.markdownRemark;
     const author = get(this.props, 'data.site.siteMetadata.author');
@@ -57,7 +68,7 @@ class BlogPostTemplate extends React.Component {
               <Share url={url} title={post.frontmatter.title} />
             )}
           </Card>
-
+          <div id="disqus_thread" />
           <PageNav>
             {previous && (
               <Button to={previous.fields.slug} rel="prev">
