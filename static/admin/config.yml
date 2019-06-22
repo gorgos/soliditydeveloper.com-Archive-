@@ -5,16 +5,21 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+site_url: https://www.soliditydeveloper.com
+display_url: https://soliditydeveloper.com
+logo_url: https://www.soliditydeveloper.com/img/main.jpg
+
 collections:
   - name: "blog"
     label: "Blog"
     folder: "src/pages"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     editor:
      preview: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "string" }
+      - { label: "Featured Image", name: "featuredImage", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
