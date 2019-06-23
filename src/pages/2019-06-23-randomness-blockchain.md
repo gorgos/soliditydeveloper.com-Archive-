@@ -1,8 +1,8 @@
 ---
-title: Hello World
-date: 2019-06-18T23:17:50.099Z
-description: The problem with randomness
-featuredImage: ./img/random.png
+title: Randomness and the blockchain
+date: 2019-06-23T23:17:50.099Z
+description: How to achieve secure randomness for Solidity smart contracts?
+featuredImage: ../../static/img/random.png
 ---
 When we talk about randomness and blockchain, these are really two problems:
 
@@ -17,7 +17,7 @@ Why is it so hard? Well, that’s due to the nature of random numbers. One can e
 
 ![random-number-generator](/img/ur4wuq0.gif "Seemingly random numbers again")
 
-Naively, one might propose that each node computes a random number locally. It further broadcasts this random number. Since each node will do the same, one can compute the final random number using a function that takes the previously locally generated numbers as inputs and produces a single output, e.g., v₁⊕ v₂ · · · ⊕ vₙ. However, the last node to broadcast his local random number can wait with the generation until he received local numbers from every other node. Subsequently, he can produce any final random number R for the distributed system by picking a local number vₓ = R ⊕ v₁⊕ v₂ · · · ⊕ vₙ. Clearly, such a system to produce random numbers is flawed.
+Naively, one might propose that each node computes a random number locally. It further broadcasts this random number. Since each node will do the same, one can compute the final random number using a function that takes the previously locally generated numbers as inputs and produces a single output, e.g., v₁ ⊕ v₂ · · · ⊕ vₙ. However, the last node to broadcast his local random number can wait with the generation until he received local numbers from every other node. Subsequently, he can produce any final random number R for the distributed system by picking a local number vₓ = R ⊕ v₁ ⊕ v₂ · · · ⊕ vₙ. Clearly, such a system to produce random numbers is flawed.
 
 We need something better. Stay tuned for detailed descriptions how to tackle these issues. Meanwhile, have a look at [Predicting Random Numbers in Ethereum Smart Contracts](https://blog.positive.com/predicting-random-numbers-in-ethereum-smart-contracts-e5358c6b8620?gi=55eb50efe444). It’s a great start for the first question. And for the second one, there are some interesting ideas out there and some seemingly crazy ones, e.g., the new idea by the Ethereum Foundation to build thousands of ASIC’s to verify VDF’s.
 
@@ -89,13 +89,16 @@ First versions of the commitment scheme exist since 1981. Have a look a Michael 
 
 We use the naive idea I described at the beginning:
 
-> Each node computes a random number locally. It further broadcasts this random number. Since each node will do the same, one can compute the final random number using a function that takes the previously locally generated numbers as inputs and produces a single output, e.g., v₁⊕ v₂ · · · ⊕ vₙ.
+> 
+Each node computes a random number locally. It further broadcasts this random number. Since each node will do the same, one can compute the final random number using a function that takes the previously locally generated numbers as inputs and produces a single output, e.g., v₁⊕ v₂ · · · ⊕ vₙ.
 
 But instead of broadcasting the random number, a node will compute the hash of that number first. This hash will be the _commitment_. It then broadcasts the commitment hash. How does that help?
 
-As the name suggests, a node is then _committed_ to its original secret number, because it’s impossible to find a collision (another number that produces the same hash). Therefore, in the subsequent reveal phase a node cannot change its secret number anymore. Naturally, each node starts with the reveal phase only after having received all other node’s commitments. The procedure will look like this:
 
-1. All participants, `P1` … `Pn`, each generate a secret value, `Vi`.
+As the name suggests, a node is then _committed_ to its original secret number, because it’s impossible to find a collision (another number that produces the same hash). Therefore, in the subsequent reveal phase a node cannot change its secret number anymore. Naturally, each node starts with the reveal phase only after having received all other node’s commitments. The procedure will look like this:
+
+1. 
+All participants, `P1` … `Pn`, each generate a secret value, `Vi`.
 2. `Pi` computes the commitment hash for their secret value: `Ci = H(Vi)`.
 3. Each `Pi` sends `Ci` first (instead of `Vi`) .
 4. After all `Ci` are received, each Pisends Vi. All participants can verify the receiving secret values by checking if `Ci == H(Vi)`.
@@ -114,11 +117,13 @@ The issue we are facing is the situation where the last node `Pi` has to reveal 
 2. In the reveal phase, hold back the secret value of his last entity.
 3. Wait for every other entity to reveal their value and then compute the final result. If it yields a positive outcome in the sum for all participating entities, choose to reveal the value of the last entity. Otherwise, never reveal the last value. The gamble must be aborted and players will be refunded. The attacker only lost the gamble with a single entity.
 
-**Multi-party commitment schemes**
+**Multi-party commitment scheme
+s**
 
 The modification for the multi-party environment is fairly simple, but comes with some major drawbacks.
 
-**Modification:** In addition to their commitments, each participant sends along a pledge. After the reveal phase, the pledge will be refunded to every revealing entity. In case of participants not revealing their value, they not only just loose the gamble, but also their pledge. In such a scenario, the pledges of all not revealing entities are split between all revealing entities or alternatively burned.
+
+**Modification:** In addition to their commitments, each participant sends along a pledge. After the reveal phase, the pledge will be refunded to every revealing entity. In case of participants not revealing their value, they not only just loose the gamble, but also their pledge. In such a scenario, the pledges of all not revealing entities are split between all revealing entities or alternatively burned.
 
 **Implication:** Unfortunately, the required pledge sizes can get absurdly high. Given a lottery for 10,000 participants, a ticket fee of 4 USD and a single winner, every participant would be required to pledge almost 400 million USD when refunding the pledges to the participants (feel free to do the math).
 
