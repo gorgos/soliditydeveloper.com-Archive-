@@ -2,7 +2,7 @@
 title: Devcon 5 Applications closing in one week
 date: 2019-06-29T01:16:48.061Z
 description: Devcon 5 Applications closing
-featuredImage: ../../static/img/deva2019b.svg
+featuredImage: ../../static/img/deva2019b.png
 ---
 Watch out for the [Devcon 5](https://devcon.org/) applications. You only have one week left to apply either as
 
