@@ -37,7 +37,7 @@ Sometimes this is not good enough. If we are computing pay-outs for Ether, then 
 This does not mean that it is always fine. Depending on your use case, you might want to favor an implementation using a numerator and denominator.
 
 ```javascript
-uint256 numerator = 30 \* 100 \* 13;
+uint256 numerator = 30 * 100 * 13;
 uint256 denominator = 13;
 ```
 
