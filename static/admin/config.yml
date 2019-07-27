@@ -8,6 +8,7 @@ public_folder: /img
 site_url: https://www.soliditydeveloper.com
 display_url: https://soliditydeveloper.com
 logo_url: https://www.soliditydeveloper.com/img/main.jpg
+publish_mode: editorial_workflow
 
 collections:
   - name: "blog"
