@@ -18,7 +18,7 @@ contract MyCrowdsale {
 
 What's the advantage over `constructor(uint256 _rate)`?
 
-* Deployment and configuration does not need to happen at the same time. This can be useful 
+* Deployment and configuration does not need to happen at the same time. This can be useful when your workflow requires it.
 * Easier [Etherscan verification](https://etherscan.io/verifyContract) as you do not have to deal with messy constructor arguments.
 * Can be used to avoid the 'Stack too deep, try removing local variables' error when passing more than 13 variables.
 
