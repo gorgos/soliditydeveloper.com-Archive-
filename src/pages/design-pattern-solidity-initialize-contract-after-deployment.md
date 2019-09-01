@@ -1,6 +1,6 @@
 ---
 title: 'Design Pattern Solidity: Initialize Contract after Deployment'
-date: 2019-07-27T04:03:08.341Z
+date: 2019-09-01T04:03:08.341Z
 description: Initialize Contract after Deployment
 featuredImage: ../../static/img/initialization.jpg
 ---
