@@ -2,7 +2,7 @@
 title: 'Design Pattern Solidity: Initialize Contract after Deployment'
 date: 2019-09-01T04:03:08.341Z
 description: Initialize Contract after Deployment
-featuredImage: ../../static/img/initialization.jpg
+featuredImage: ../../static/img/initialization.png
 ---
 There are a few reasons why you might want to initialize a contract after deployment and not directly by passing constructor arguments. But first let's look at an example:
 
