@@ -47,13 +47,7 @@ I won't go into code examples, as this will get quite long and messy. But I will
 
  **getSortedSpot** 
 
-`function getSortedSpot(
-
-address _user, uint256 _points
-)
- public
- view
- returns (address)`
+\`function getSortedSpot(address _user, uint256 _points) public view returns (address)\`
 
 This will be a view function inside your contract. It iterates through your ranking linked list while in each iteration comparing the user points of the current list address to the given `_points`. You call `getSortedSpot` before inserting a new user to find out the correct insertion position.
 
