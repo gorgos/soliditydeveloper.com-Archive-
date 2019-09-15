@@ -49,14 +49,25 @@ I won't go into code examples, as this will get quite long and messy. But I will
 
 \`function getSortedSpot(address _user, uint256 _points) public view returns (address)\`
 
-This will be a view function inside your contract. It iterates through your ranking linked list while in each iteration comparing the user points of the current list address to the given `_points`. You call `getSortedSpot` before inserting a new user to find out the correct insertion position.
+This will be a view function inside your contract. It iterates from bottom to top through your ranking linked list while in each iteration comparing the user points of the current list address to the given `_points`. Once you find the first address in the list that has more points, return it as reference. You will call `getSortedSpot` before inserting a new user to find out the correct insertion position.
 
 Things to consider:
 
-* 
+* Don't return a reference address that equals `_user`. As this means an existing user in the ranking will get a new position.
+* If there are no addresses with more points, we are dealing with the new user becoming the first rank. Return the current first rank as reference.
 
- **insertUser** 
+**insertUser** 
 
 `function sortedInsertUser(address user, address referenceUser) public`
 
-This will be your actual insertion method. You pass the result from `getSortedSpot`.
+This will be your actual insertion method. You pass the result from `getSortedSpot` as `referenceUser`. And now we can just verify that the reference is indeed correct:
+
+1. Compute the new points for `user` based on whatever your metrics are.
+2. Compare the computed points to those of `referenceUser`. The referenced user must have more points.
+3. Compare the computed points to those of one rank below `referenceUser`. One rank below must have less points.
+4. Insert the user into the ranking.
+
+Things to consider:
+
+* The first and last rank require special consideration.
+* If the passed `user` already exists in the ranking, remove it before newly inserting it or you will get double entries.
