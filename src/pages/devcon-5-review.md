@@ -1,6 +1,6 @@
 ---
 title: Devcon 5 - Review
-date: 2019-09-30T20:55:10.533Z
+date: 2019-10-24T20:55:10.533Z
 description: 'Devcon V Review '
 featuredImage: ../../static/img/devcon5.jpg
 ---
@@ -33,6 +33,6 @@ And the outdoor stage was a nice concept. However, the talks there were often bo
 
 ![](/img/weather.jpg)
 
-All in all, I found this year's Devcon a great experience, but not as good as last year. However, Osaka and Kyoto were great places to explore. I would have wished to see more Japanese people at the conference.
+All in all, I found this year's Devcon a great experience, but not as good as last year. However, Osaka and Kyoto were great places to explore. Although, I would have wished to see more Japanese people at the conference.
 
 ![](/img/cats.jpg)
