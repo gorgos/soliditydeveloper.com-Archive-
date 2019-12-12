@@ -1,6 +1,6 @@
 ---
 title: Gaining back control of the internet
-date: 2019-11-20T04:11:16.352Z
+date: 2019-12-12T04:11:16.352Z
 description: Ocelot
 featuredImage: ../../static/img/cloud-blockchain.jpg
 ---
