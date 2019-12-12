@@ -6,7 +6,7 @@ featuredImage: ../../static/img/cloud-blockchain.jpg
 ---
 I recently came across an ambitious company  that will completely redefine the way we are using the internet. Or rather, the way we are using its underlying infrastructure which ultimately is the internet. While looking at their offering, I also learned how to get anonymous cloud machines, you will also learn how to get anonymous cloud machines and how to avoid the hassle with MetaMask for users.
 
-Sounds interesting? It is! [This presentation](https://www.youtube.com/watch?v=DNwIY1FpERs) by Lon Lundgren at San Francisco Blockchain Week explains the core idea of [Ocelot](https://ocelot.net/) and a  cool new project they built on top of it. The project is called [Burner Machine](http://burnermachine.com/) and allows you to get an anonymous cloud machine for three hours for just one USD.
+Sounds interesting? It is! [This presentation](https://www.youtube.com/watch?v=DNwIY1FpERs) by Lon Lundgren at San Francisco Blockchain Week explains the core idea of [Ocelot](https://ocelot.net/) and a  cool new project they built on top of it. The project is called [Burner Machine](https://burnermachine.com/) and allows you to get an anonymous cloud machine for three hours for just one USD.
 
 After watching it, I reached out to them and ended up collaborating with the team. Working with them, I learned more about their vision, ideas and tech behind the project. It turned out to be even more fascinating than I imagined.
 
