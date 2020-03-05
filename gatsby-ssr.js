@@ -13,6 +13,18 @@ export const replaceRenderer = ({
   setHeadComponents([
     sheet.getStyleElement(),
     <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>,
-    <script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], MyLoader => { MyLoader.start({"baseUrl":"mc.us19.list-manage.com","uuid":"a407f3acc50091c0f47426c21","lid":"faec4da08d","uniqueMethods":true }) })</script>
+    <script type="text/javascript">
+      window.dojoRequire(
+        ["mojo/signup-forms/Loader"],
+        function(Myloader) {
+          Myloader.start({
+            "baseUrl":"mc.us19.list-manage.com",
+            "uuid":"a407f3acc50091c0f47426c21",
+            "lid":"faec4da08d",
+            "uniqueMethods":true
+          })
+        }
+      );
+    </script>
   ]);
 };
