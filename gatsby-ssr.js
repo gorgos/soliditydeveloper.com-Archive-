@@ -5,26 +5,25 @@ import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 export const replaceRenderer = ({
   bodyComponent,
   replaceBodyHTMLString,
+  setPostBodyComponents,
   setHeadComponents,
 }) => {
   const sheet = new ServerStyleSheet();
   const bodyHTML = renderToString(bodyComponent);
   replaceBodyHTMLString(bodyHTML);
   setHeadComponents([
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TPGJ3Z4');</script>,
     sheet.getStyleElement(),
-    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>,
-    <script type="text/javascript">
-      window.dojoRequire(
-        ["mojo/signup-forms/Loader"],
-        function(Myloader) {
-          Myloader.start({
-            "baseUrl":"mc.us19.list-manage.com",
-            "uuid":"a407f3acc50091c0f47426c21",
-            "lid":"faec4da08d",
-            "uniqueMethods":true
-          })
-        }
-      );
-    </script>
+  ]);
+  setPostBodyComponents([
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPGJ3Z4"
+        height="0" width="0" style="display:none;visibility:hidden">
+      </iframe>
+    </noscript>
   ]);
 };
