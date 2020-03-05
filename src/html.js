@@ -28,4 +28,20 @@ export default class HTML extends React.Component {
       </html>
     );
   }
+
+  componentDidMount() {
+    const configScript = document.createElement("script");
+    configScript.type = "text/javascript"
+    configScript.src = "//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js";
+    configScript.dataDojoConfig = "usePlainJson: true, isDebug: false"
+    configScript.async = true;
+
+    const script = document.createElement("script");
+    script.type = "text/javascript"
+    script.async = true;
+    script.innerHTML = 'window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us19.list-manage.com","uuid":"a407f3acc50091c0f47426c21","lid":"faec4da08d","uniqueMethods":true}) })'
+
+    document.body.appendChild(configScript);
+    document.body.appendChild(script);
+  }
 }
