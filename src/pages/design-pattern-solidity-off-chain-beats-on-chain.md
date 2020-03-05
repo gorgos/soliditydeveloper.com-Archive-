@@ -47,7 +47,9 @@ I won't go into code examples, as this will get quite long and messy. But I will
 
  **getSortedSpot** 
 
-\`function getSortedSpot(address _user, uint256 _points) public view returns (address)\`
+```javascript
+function getSortedSpot(address _user, uint256 _points) public view returns (address)
+```
 
 This will be a view function inside your contract. It iterates from bottom to top through your ranking linked list while in each iteration comparing the user points of the current list address to the given `_points`. Once you find the first address in the list that has more points, return it as reference. You will call `getSortedSpot` before inserting a new user to find out the correct insertion position.
 
@@ -58,7 +60,9 @@ Things to consider:
 
 **insertUser** 
 
-`function sortedInsertUser(address user, address referenceUser) public`
+```javascript
+function sortedInsertUser(address user, address referenceUser) public
+```
 
 This will be your actual insertion method. You pass the result from `getSortedSpot` as `referenceUser`. And now we can just verify that the reference is indeed correct:
 
