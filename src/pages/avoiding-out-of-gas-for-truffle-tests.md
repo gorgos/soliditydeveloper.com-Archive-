@@ -16,7 +16,7 @@ We will talk about the actual case of running out of gas in Truffle tests. In mo
 
 * Set the `gasPrice` for each transaction to `0`!
 
-You can either do that [manually](https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#making-a-transaction) for each transaction by passing `{ gasPrice: 0`. Or you can set the [defaults](https://github.com/trufflesuite/truffle/tree/master/packages/contract#mycontractdefaultsnew_defaults) for a contract to use a gas price of 0:
+You can either do that [manually](https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#making-a-transaction) for each transaction by passing the options as `{ gasPrice: 0 }`. Or you can set the [defaults](https://github.com/trufflesuite/truffle/tree/master/packages/contract#mycontractdefaultsnew_defaults) for a contract to use a gas price of 0:
 
 ```javascript
 MyContract.defaults({
