@@ -2,7 +2,7 @@
 title: Avoiding out of gas for Truffle tests
 date: 2020-03-07T03:03:12.039Z
 description: avoid-truffle-out-of-gas
-featuredImage: ../../static/img/truffle.jpg
+featuredImage: ../../static/img/truffle.png
 ---
 You have probably seen this error message a lot of times:
 
