@@ -16,13 +16,15 @@ We will talk about the actual case of running out of gas in Truffle tests. In mo
 
 * Set the `gasPrice` for each transaction to `0`!
 
-You can either do that [manually](https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#making-a-transaction) for each transaction by passing the options as `{ gasPrice: 0 }`. Or you can set the [defaults](https://github.com/trufflesuite/truffle/tree/master/packages/contract#mycontractdefaultsnew_defaults) for a contract to use a gas price of 0:
+You can either do that [manually](https://www.trufflesuite.com/docs/truffle/getting-started/interacting-with-your-contracts#making-a-transaction) for each transaction by passing `{ gasPrice: 0`. Or you can set the [defaults](https://github.com/trufflesuite/truffle/tree/master/packages/contract#mycontractdefaultsnew_defaults) for a contract to use a gas price of 0:
 
 ```javascript
 MyContract.defaults({
     gasPrice: 0,
 })
 ```
+
+This will not only be useful for avoiding out of gas errors, but it will also help when verifying ETH balances. Now you will not have to use complicated math to figure out the gas costs with [estimateGas](https://web3js.readthedocs.io/en/v1.2.0/web3-eth-contract.html#methods-mymethod-estimategas), multiplying it with the gas price and subtracting it from the expected ETH balance.
 
 ## Some exceptions
 
