@@ -8,7 +8,7 @@ You may or may not be used to a [garbage collectors](https://en.wikipedia.org/wi
 
 You may be wondering '**Why should I care?**'. Let us take a look at the reasons for releasing unused data.
 
-#### Gas costs
+### 1. Gas costs
 
 The obvious is answer is that you can receive gas refunds for releasing unused storage. In the [yellow paper](https://ethereum.github.io/yellowpaper/paper.pdf) on page 25 '*Appendix G. Fee Schedule'*, you can read the gas costs for each instruction. As you might know, `SSTORE` will generally create the most costs in your contracts with a significant cost of 20,000 gas per instruction. On the contrary, if you look at `R_sclear`:
 
@@ -32,7 +32,7 @@ Instead of having to write `myStructInstance = new MyStruct(0,0,address(0))`, yo
 
 If you have a mapping in a struct or in your state in general, Solidity cannot delete it, because it does not know the keys for the mapping. Since the keys are arbitrary and not stored along, the only way to delete structs is to know the key for each stored value. A value can then be deleted by `delete myMapping[myKey]`.
 
-#### Network bloating
+### 2. Network bloating
 
 If the gas costs did not convince you, I hear you. It seems like a design flaw in Ethereum that you can just store data and leave it there forever without ever paying for it again. But that does not mean should store everything forever. Storing useless data only forces every Ethereum node to store your data for all eternity. What a waste of resources!
 
